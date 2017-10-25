@@ -1,0 +1,53 @@
+{%extends "head.html"%}
+{% load crispy_forms_tags %}
+{% block content %}
+<style>
+{% block style %}
+.jumbotron{
+    background-color: #bf21e4;
+    color:#fff;
+    margin:0 px
+    
+}
+.bg-dark{
+     background-color: #bf21e4!important;
+    
+}
+
+.nav-link {
+    color: #fff!important;
+}
+
+.nav-link:hover
+{
+    color:#111!important;
+}
+
+
+/*.btn
+{
+    color:#fff;
+}*/
+
+{% endblock %}
+</style>  
+
+    
+ <div class='row'>
+    <div class='col-sm-4'></div>
+    <div class='col-sm-4 '>
+    {% if title %}
+   
+       
+    <h1 >{{title}}</h1>
+        
+    
+    {% endif %}
+    
+    <form method='POST' action=''>{% csrf_token %}
+    {{form|crispy}}
+    <input type='submit' value='submit' class='btn btn-primary'>
+    </form>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,133 @@
+{% extends 'head.html' %}
+{% load staticfiles %}
+{% block title %}welcome{% endblock %} {{request.user}}
+
+<style>
+{% block style %}
+.jumbotron{
+    background-color: #bf21e4;
+    color:#fff;
+    margin:0 px
+    
+}
+.bg-dark{
+     background-color: #bf21e4!important;
+    
+}
+ .nav-link {
+    color: #fff!important;
+}
+
+.nav-link:hover
+{
+    color:#111!important;
+}
+
+
+/*.btn
+{
+    color:#fff;
+}*/
+
+{% endblock %}
+</style>
+
+
+   
+        
+        
+       
+        
+        
+    
+{%block jumbotron %}
+
+    <div class="jumbotron">
+        <div class="container">
+        <div class="row">
+            <div class="col-4 col-sm-6 col-lg-6">
+            <h1>DEVIl MAY CRY!</h1>
+            <p class="lead text-align-center ">WELCOME to my website though it is named for DEVIL MAY CRY.Signup with your fav character</p>
+            <a class="btn btn-lg btn-dark" href="signup.html" role="button">sign up</a>
+            </div>
+            <div class="col-8 col-sm-6 col-lg-6" >
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/LHN_VzU4wjc" frameborder="0" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+</div>
+    
+{% endblock %}
+        {% block content %}
+        <div class="row">
+            <div class="col-3"></div>
+    {% if request.user.is_authenticated  %}
+            <div class="col-9">
+            <h1>You are logged in!</h1>
+            {% if queryset %}
+            <h2>welcome for being the part of shitty staff!</h2>
+            
+                {% for runner in queryset %}
+                <table class="table">
+            <tr><td>{{forloop.counter}}</td> <td> {{runner}}</td> <td>{{runner.Full_name}}</td><td>{{runner.email}}</td><td>{{runner.timestamp|timesince}}  ago </td></tr>
+                {% endfor %}
+                {%endif%}
+                {%else%}
+                </table>
+                </div>
+        </div>
+        <div class="container">
+            <div class="row ">
+            
+                <div class="col-4 lead text-align-center">
+                   <p>DANTE:</br>
+                   <span class="fa-stack fa-lg fa-5x">
+                        <i class="fa fa-paw fa-stack-1x " style="color:red;" ></i>
+                        <i class="fa fa-circle-o-notch fa-stack-2x fa-spin"style="color:orange;" ></i>
+
+                        
+                    </span>
+                  <br/>
+                    Dante is the main protagonist of the Devil May Cry series. He is the second son of the demon Sparda and the human Eva, and the younger twin brother of Vergil. Dante is a paranormal mercenary, private investigator and vigilante Devil Hunter dedicated to exterminating evil demons and other malevolent supernatural forces; a mission
+                    he follows in pursuit of those that killed his mother and corrupted his brother.
+                    </p>
+                  
+                     <img src='{% static "img/dante.jpg" %}' class='image-responsive' height="550" width="376"/>
+                </div>
+                
+        
+                <div class="col-4 lead text-align-center  ">
+                    
+                   <p>VERGIL:</br>
+                   <span class="fa-stack fa-lg fa-5x ">
+                    <i class="fa fa-moon-o fa-stack-1x fa-spin" style='color:blue' ></i>
+                   <i class="fa fa-circle-o fa-stack-2x " ></i>
+                   </span></br>
+                    Vergil was the eldest of twin sons  and  in its special edition. Following the death of their mother as children, Vergil and Dante go their separate ways, with Vergil rejecting his humanity and embracing his demonic heritage, contrasting his younger brother's embrace of humanity and initial rejection of the demonic. Stoic and reserved, Vergil displays a willingness
+                    to do anything in his quest to obtain the power of his father, Sparda.
+                    </p>
+                    <img src='{% static "img/vergil.jpg" %}' class='image-responsive'/ height="550" width="376">
+                </div>
+                <div class="col-4">  
+                    
+                
+                <p class="lead text-align-center">{{title}}</p>
+           
+                <form method='POST' action=''>{% csrf_token %}
+                {{form.as_p}}
+                <input type='submit' value='Sign Up' class="btn btn-primary"/>
+                
+                </form>
+                </div> 
+                </div>
+            </div>
+        </div>
+          {% endif %}  
+        {% endblock %}
+    
+    
+    <!--<h1>{{template_title}}</h1>
+    {{user}}
+    </br>
+    <!--{{request.user}}-->
+</html>
